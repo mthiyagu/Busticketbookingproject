@@ -75,7 +75,7 @@ public class SearchPage {
 				System.out.println("Bus Type: 2+2 PUSHBACK  A/c");
 				System.out.println("Departure Time: 10:30PM");
 				System.out.println("Fare: Rs.700");
-				System.out.println("Please enter only one seat numbers From 1 to 44");
+				System.out.println("Please enter only one seat number From 1 to 44");
 				seatselection(Frm, Tor);
 				System.out.println("Fare: Rs.700");
 				break;

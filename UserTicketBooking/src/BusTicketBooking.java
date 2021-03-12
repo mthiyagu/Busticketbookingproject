@@ -13,7 +13,7 @@ public class BusTicketBooking {
 			System.out.println("Press '1' For User Registration");
 			System.out.println("Press '2' for User Login");
 			System.out.println("Press '3' To Exit");
-			no = num.hasNext()  ? num.nextInt(): 3;
+			no = num.hasNextInt()  ? num.nextInt(): 3;
 			switch (no) {
 			case 1: {
 				s1.usrreg();
