@@ -1,5 +1,5 @@
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.*;
 
 public class BusTicketBooking {
 
@@ -13,7 +13,7 @@ public class BusTicketBooking {
 			System.out.println("Press '1' For User Registration");
 			System.out.println("Press '2' for User Login");
 			System.out.println("Press '3' To Exit");
-			no = num.hasNext() ? num.nextInt(): 3;
+			no = num.hasNext()  ? num.nextInt(): 3;
 			switch (no) {
 			case 1: {
 				s1.usrreg();
@@ -35,7 +35,7 @@ public class BusTicketBooking {
 			}
 
 		} while (no != 3);
-		s1.show();
+		//s1.show();
 		num.close();
 	}
 

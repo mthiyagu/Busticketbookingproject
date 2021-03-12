@@ -45,7 +45,7 @@ public class SearchPage {
 				System.out.println("Bus Type: 2+2 Semi Sleeper A/c Multi-Axle Volvo");
 				System.out.println("Departure Time: 9:30PM");
 				System.out.println("Fare: Rs.750");
-				System.out.println("Please enter your seat numbers From 1 to 44");
+				System.out.println("Please enter only one seat number From 1 to 44");
 				seatselection(Frm, Tor);
 				System.out.println("Fare: Rs.750");
 				break;
@@ -55,7 +55,7 @@ public class SearchPage {
 				System.out.println("Bus Type: 2+1 Sleeper Non A/c");
 				System.out.println("Departure Time: 8:30PM");
 				System.out.println("Fare: Rs.800");
-				System.out.println("Please enter your seat numbers From 1 to 30");
+				System.out.println("Please enter only one seat numbers From 1 to 30");
 				seatselection(Frm, Tor);
 				System.out.println("Fare: Rs.800");
 				break;
@@ -65,7 +65,7 @@ public class SearchPage {
 				System.out.println("Bus Type: 2+2 Semi-Sleeper Non A/c");
 				System.out.println("Departure Time: 10:30PM");
 				System.out.println("Fare: Rs.650");
-				System.out.println("Please enter your seat numbers From 1 to 44");
+				System.out.println("Please enter only one seat numbers From 1 to 44");
 				seatselection(Frm, Tor);
 				System.out.println("Fare: Rs.650");
 				break;
@@ -75,7 +75,7 @@ public class SearchPage {
 				System.out.println("Bus Type: 2+2 PUSHBACK  A/c");
 				System.out.println("Departure Time: 10:30PM");
 				System.out.println("Fare: Rs.700");
-				System.out.println("Please enter your seat numbers From 1 to 44");
+				System.out.println("Please enter only one seat numbers From 1 to 44");
 				seatselection(Frm, Tor);
 				System.out.println("Fare: Rs.700");
 				break;

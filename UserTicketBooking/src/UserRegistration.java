@@ -71,7 +71,7 @@ public class UserRegistration {
 				j++;
 			}
 		}
-		
+
 		sp1.busdetails(org, dstation);
 	}
 
