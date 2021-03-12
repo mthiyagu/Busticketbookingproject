@@ -14,6 +14,10 @@ public class SearchPage {
 	String mobno;
 	Scanner busselct = new Scanner(System.in);
 	int bsname;
+	Scanner sorgn = new Scanner(System.in);
+	
+	Scanner sDestn = new Scanner(System.in);
+	
 
 	void busdetails(String Fromroute, String Toroute) {
 		HashMap<Integer, String> Froute = new HashMap<Integer, String>();
@@ -30,7 +34,9 @@ public class SearchPage {
 		Troute.put(19, "salem");
 		String Frm = Fromroute;
 		String Tor = Toroute;
-		
+		int j = 1;
+		for(int i=0;i<j;i++)
+		{
 		if (Froute.containsValue(Frm) && Troute.containsValue(Tor)) {
 
 			System.out.println("Please Choose your bus: ");
@@ -86,8 +92,14 @@ public class SearchPage {
 			}
 		} else {
 			System.out.println("Oops...Sorry! There is no bus service for the particular route. Thank you");
+			System.out.println("Enter From Station: ");
+			Frm = sorgn.nextLine();
+			System.out.println("Enter To Station: ");
+			Tor =sDestn.nextLine();
+			j++;
+			
 		}
-
+		}
 		busselct.close();
 	}
 

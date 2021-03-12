@@ -62,6 +62,7 @@ public class UserRegistration {
 	void search() {
 		int j = 1;
 		for (int i = 0; i < j; i++) {
+			
 			System.out.println("Enter From Station: ");
 			org = orgn.nextLine();
 			System.out.println("Enter To Station: ");
