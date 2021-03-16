@@ -58,13 +58,13 @@ public class UserRegistration {
 					Search();
 					break;
 				}
-//				case 2:{
+//			case 2:{
 //					ViewTickets();
 //					break;
 //				}
 				default:
 				{
-					System.out.println("Please enter the right one.");
+					System.out.println("Please enter the right number.");
 				}
 				}
 				

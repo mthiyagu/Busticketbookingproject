@@ -20,7 +20,6 @@ public class BusTicketBooking {
 				break;
 			}
 			case 2: {
-				
 				s1.UserRegister();
 				System.out.println("Registration done successfully");
 				break;

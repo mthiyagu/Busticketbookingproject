@@ -3,7 +3,7 @@ import java.util.*;
 public class SearchPage {
 
 	Scanner stno = new Scanner(System.in);
-	int seatno;
+	String[] seatno;
 	Scanner cusname = new Scanner(System.in);
 	String cname;
 	Scanner cage = new Scanner(System.in);
@@ -16,7 +16,9 @@ public class SearchPage {
 	int bsname;
 	Scanner sorgn = new Scanner(System.in);
 	Scanner sdestn = new Scanner(System.in);
-	BusMap b1=new BusMap();
+	BusMap b1 = new BusMap();
+	int count = 0;
+	int fare;
 
 	void BusDetails(String Fromroute, String Toroute) {
 		HashMap<Integer, String> Froute = new HashMap<Integer, String>();
@@ -33,10 +35,10 @@ public class SearchPage {
 		Troute.put(19, "salem");
 		String Frm = Fromroute;
 		String Tor = Toroute;
+
 		int j = 1;
 		for (int i = 0; i < j; i++) {
 			if (Froute.containsValue(Frm) && Troute.containsValue(Tor)) {
-
 				System.out.println("Please Choose your bus: ");
 				System.out.println("1. Parveen Travels 2+1 Sleeper A/c Rs.800");
 				System.out.println("2. Muthu Travels 2+2 Semi-Sleeper non a/c Rs.650");
@@ -52,26 +54,62 @@ public class SearchPage {
 				switch (bsname) {
 				case 1: {
 					System.out.println("Travels Name: Parveen Travels");
-					SeatSelection(Frm, Tor);
-					System.out.println("Fare: Rs.800");
+					fare = 800;
+					SeatSelection(Frm, Tor, fare);
 					break;
 				}
 				case 2: {
 					System.out.println("Travels Name: Muthu Travels");
-					SeatSelection(Frm, Tor);
-					System.out.println("Fare: Rs.650");
+					fare = 650;
+					SeatSelection(Frm, Tor, fare);
 					break;
 				}
 				case 3: {
 					System.out.println("Travels Name: SRM Travels");
-					SeatSelection(Frm, Tor);
-					System.out.println("Fare: Rs.650");
+					fare = 750;
+					SeatSelection(Frm, Tor, fare);
 					break;
 				}
 				case 4: {
 					System.out.println("Travels Name: YBM Travels");
-					SeatSelection(Frm, Tor);
-					System.out.println("Fare: Rs.700");
+					fare = 600;
+					SeatSelection(Frm, Tor, fare);
+					break;
+				}
+				case 5: {
+					System.out.println("Travels Name: King Travels");
+					fare = 700;
+					SeatSelection(Frm, Tor, fare);
+					break;
+				}
+				case 6: {
+					System.out.println("Travels Name: Sree Kannathal Travels");
+					fare = 750;
+					SeatSelection(Frm, Tor, fare);
+					break;
+				}
+				case 7: {
+					System.out.println("Travels Name: Apple Travels");
+					fare = 780;
+					SeatSelection(Frm, Tor, fare);
+					break;
+				}
+				case 8: {
+					System.out.println("Travels Name: National Travels");
+					fare = 800;
+					SeatSelection(Frm, Tor, fare);
+					break;
+				}
+				case 9: {
+					System.out.println("Travels Name: Sharma Transport");
+					fare = 690;
+					SeatSelection(Frm, Tor, fare);
+					break;
+				}
+				case 10: {
+					System.out.println("Travels Name: GeePee Travels");
+					fare = 850;
+					SeatSelection(Frm, Tor, fare);
 					break;
 				}
 				default: {
@@ -91,14 +129,14 @@ public class SearchPage {
 		busselct.close();
 	}
 
-	
-	void SeatSelection(String frte, String trte) {
+	void SeatSelection(String frte, String trte, int totfare) {
 		String fstn = frte;
 		String tstn = trte;
+		int totprice = totfare;
 		System.out.println("Bus Type: 2+2 Semi Sleeper A/c Multi-Axle Volvo");
 		b1.SeatBusMap();
-		System.out.println("Please enter only one seat number From 1 to 44");
-		seatno = stno.nextInt();
+		System.out.println("Please enter Seat number with comma separator:");
+		seatno = stno.nextLine().split(","); // Import concept to split a value using comma separator
 		System.out.println("Please enter Passenger name: ");
 		cname = cusname.nextLine();
 		System.out.println("Enter Age: ");
@@ -112,10 +150,16 @@ public class SearchPage {
 		System.out.println("Passenger Name:  " + cname);
 		System.out.println("Age:  " + age);
 		System.out.println("Gender:  " + gen);
-		System.out.println("Seat No:  " + seatno);
+		for (String w : seatno) {
+			System.out.println(w);
+			count = count + 1;
+		}
+		totprice = totprice * count;
+		System.out.println("Total booked Seat numbers :" + count);
+		System.out.println("Total Fare: " + totprice);
+		// System.out.println("Seat No: " + seatno);
 		System.out.println("Mobile Number :  " + mobno);
+		stno.close();
 	}
 
-
 }
-
