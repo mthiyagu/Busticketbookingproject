@@ -15,11 +15,10 @@ public class SearchPage {
 	Scanner busselct = new Scanner(System.in);
 	int bsname;
 	Scanner sorgn = new Scanner(System.in);
-	
-	Scanner sDestn = new Scanner(System.in);
-	
+	Scanner sdestn = new Scanner(System.in);
+	BusMap b1=new BusMap();
 
-	void busdetails(String Fromroute, String Toroute) {
+	void BusDetails(String Fromroute, String Toroute) {
 		HashMap<Integer, String> Froute = new HashMap<Integer, String>();
 		HashMap<Integer, String> Troute = new HashMap<Integer, String>();
 		Froute.put(65, "chennai");
@@ -35,83 +34,76 @@ public class SearchPage {
 		String Frm = Fromroute;
 		String Tor = Toroute;
 		int j = 1;
-		for(int i=0;i<j;i++)
-		{
-		if (Froute.containsValue(Frm) && Troute.containsValue(Tor)) {
+		for (int i = 0; i < j; i++) {
+			if (Froute.containsValue(Frm) && Troute.containsValue(Tor)) {
 
-			System.out.println("Please Choose your bus: ");
-			System.out.println("Press '1' For Parveen Travels");
-			System.out.println("Press '2' For Muthu Travels");
-			System.out.println("Press '3' For SRM Travels");
-			System.out.println("Press '4' For YBM Travels");
-			bsname = busselct.nextInt();
-			switch (bsname) {
-			case 1: {
-				System.out.println("Travels Name: Parveen Travels");
-				System.out.println("Bus Type: 2+2 Semi Sleeper A/c Multi-Axle Volvo");
-				System.out.println("Departure Time: 9:30PM");
-				System.out.println("Fare: Rs.750");
-				System.out.println("Please enter only one seat number From 1 to 44");
-				seatselection(Frm, Tor);
-				System.out.println("Fare: Rs.750");
-				break;
+				System.out.println("Please Choose your bus: ");
+				System.out.println("1. Parveen Travels 2+1 Sleeper A/c Rs.800");
+				System.out.println("2. Muthu Travels 2+2 Semi-Sleeper non a/c Rs.650");
+				System.out.println("3. SRM Travels 2+2 Semi-Sleeper Multi-Axle Volvo Rs.750");
+				System.out.println("4. YBM Travels 2+2 Seater non-A/c Rs.600");
+				System.out.println("5. King Travels 2+2 Semi-Sleeper A/c Rs.700");
+				System.out.println("6. Sree Kannathal Travels 2+1 Sleeper non A/c Rs.750 ");
+				System.out.println("7. Apple Travels 2+2 Semi-Sleeper A/c Rs.780");
+				System.out.println("8. National Travels 2+1 Sleeper non a/c Rs.800");
+				System.out.println("9. Sharma Transport 2+2 Seater A/c Rs.690");
+				System.out.println("10. GeePee Travels 2+2 Semi-Sleeper A/c Rs.850");
+				bsname = busselct.nextInt();
+				switch (bsname) {
+				case 1: {
+					System.out.println("Travels Name: Parveen Travels");
+					SeatSelection(Frm, Tor);
+					System.out.println("Fare: Rs.800");
+					break;
+				}
+				case 2: {
+					System.out.println("Travels Name: Muthu Travels");
+					SeatSelection(Frm, Tor);
+					System.out.println("Fare: Rs.650");
+					break;
+				}
+				case 3: {
+					System.out.println("Travels Name: SRM Travels");
+					SeatSelection(Frm, Tor);
+					System.out.println("Fare: Rs.650");
+					break;
+				}
+				case 4: {
+					System.out.println("Travels Name: YBM Travels");
+					SeatSelection(Frm, Tor);
+					System.out.println("Fare: Rs.700");
+					break;
+				}
+				default: {
+					System.out.println("Wrong Input!Please select again..");
+				}
+				}
+			} else {
+				System.out.println("Oops...Sorry! There is no bus service for the particular route. Thank you");
+				System.out.println("Enter From Station: ");
+				Frm = sorgn.nextLine();
+				System.out.println("Enter To Station: ");
+				Tor = sdestn.nextLine();
+				j++;
+
 			}
-			case 2: {
-				System.out.println("Travels Name: Muthu Travels");
-				System.out.println("Bus Type: 2+1 Sleeper Non A/c");
-				System.out.println("Departure Time: 8:30PM");
-				System.out.println("Fare: Rs.800");
-				System.out.println("Please enter only one seat numbers From 1 to 30");
-				seatselection(Frm, Tor);
-				System.out.println("Fare: Rs.800");
-				break;
-			}
-			case 3: {
-				System.out.println("Travels Name: SRM Travels");
-				System.out.println("Bus Type: 2+2 Semi-Sleeper Non A/c");
-				System.out.println("Departure Time: 10:30PM");
-				System.out.println("Fare: Rs.650");
-				System.out.println("Please enter only one seat numbers From 1 to 44");
-				seatselection(Frm, Tor);
-				System.out.println("Fare: Rs.650");
-				break;
-			}
-			case 4: {
-				System.out.println("Travels Name: YBM Travels");
-				System.out.println("Bus Type: 2+2 PUSHBACK  A/c");
-				System.out.println("Departure Time: 10:30PM");
-				System.out.println("Fare: Rs.700");
-				System.out.println("Please enter only one seat number From 1 to 44");
-				seatselection(Frm, Tor);
-				System.out.println("Fare: Rs.700");
-				break;
-			}
-			default: {
-				System.out.println("Wrong Input!Please select again..");
-			}
-			}
-		} else {
-			System.out.println("Oops...Sorry! There is no bus service for the particular route. Thank you");
-			System.out.println("Enter From Station: ");
-			Frm = sorgn.nextLine();
-			System.out.println("Enter To Station: ");
-			Tor =sDestn.nextLine();
-			j++;
-			
-		}
 		}
 		busselct.close();
 	}
 
-	void seatselection(String frte, String trte) {
+	
+	void SeatSelection(String frte, String trte) {
 		String fstn = frte;
 		String tstn = trte;
+		System.out.println("Bus Type: 2+2 Semi Sleeper A/c Multi-Axle Volvo");
+		b1.SeatBusMap();
+		System.out.println("Please enter only one seat number From 1 to 44");
 		seatno = stno.nextInt();
-		System.out.println("Please enter customer name: ");
+		System.out.println("Please enter Passenger name: ");
 		cname = cusname.nextLine();
-		System.out.println("Please mention Age: ");
+		System.out.println("Enter Age: ");
 		age = cage.nextInt();
-		System.out.println("Please Enter Gender: ");
+		System.out.println("Enter Gender: ");
 		gen = cgen.nextLine();
 		System.out.println("Enter Mobile number: ");
 		mobno = cmob.nextLine();
@@ -122,7 +114,8 @@ public class SearchPage {
 		System.out.println("Gender:  " + gen);
 		System.out.println("Seat No:  " + seatno);
 		System.out.println("Mobile Number :  " + mobno);
-
 	}
 
+
 }
+

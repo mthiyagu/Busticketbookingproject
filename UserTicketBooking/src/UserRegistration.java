@@ -11,6 +11,7 @@ public class UserRegistration {
 	String cpass;
 	Scanner mnum = new Scanner(System.in);
 	int mno;
+	int value;
 // User login Validation	
 	Scanner lvusrname = new Scanner(System.in);
 	String lvname;
@@ -23,7 +24,7 @@ public class UserRegistration {
 	String dstation;
 	SearchPage sp1 = new SearchPage();
 
-	void usrreg() {
+	void UserRegister() {
 		System.out.println("Please enter your user name");
 		uname = usrname.nextLine();
 		System.out.println("Enter  password");
@@ -39,7 +40,7 @@ public class UserRegistration {
 		mno = mnum.nextInt();
 	}
 
-	void loginvalidation() {
+	void LoginValidation() {
 		int n = 1;
 		for (int i = 0; i < n; i++) {
 			System.out.println("Enter Your Username: ");
@@ -48,8 +49,25 @@ public class UserRegistration {
 			lgnpwd = lvpwd.nextLine();
 			if (lvname.equals(uname) && lgnpwd.equals(pass)) {
 				System.out.println("Welcome: " + lvname);
-// search(); Method for get Origin and Destination input				
-				search();
+// Search(); Method for get Origin and Destination input
+				System.out.println("Enter 1.Search Result/n Enter 2. View Ticket");
+				value=mnum.nextInt();
+				switch(value)
+				{
+				case 1:{
+					Search();
+					break;
+				}
+//				case 2:{
+//					ViewTickets();
+//					break;
+//				}
+				default:
+				{
+					System.out.println("Please enter the right one.");
+				}
+				}
+				
 			} else {
 				System.out.println("Invalid Username or password OR Please Register if not register ");
 				n++;
@@ -59,10 +77,10 @@ public class UserRegistration {
 
 	}
 
-	void search() {
+	void Search() {
+
 		int j = 1;
 		for (int i = 0; i < j; i++) {
-			
 			System.out.println("Enter From Station: ");
 			org = orgn.nextLine();
 			System.out.println("Enter To Station: ");
@@ -73,10 +91,10 @@ public class UserRegistration {
 			}
 		}
 
-		sp1.busdetails(org, dstation);
+		sp1.BusDetails(org, dstation);
 	}
 
-	void show() {
+	void Show() {
 		System.out.println("Your Name is: " + uname);
 		System.out.println("Password : " + pass);
 		System.out.println("Mobile Number: " + mno);
