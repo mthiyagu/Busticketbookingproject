@@ -31,7 +31,6 @@ public class UserRegistration {
 		pass = pwd.nextLine();
 		System.out.println("Enter Confirm Password: ");
 		cpass = cpwd.nextLine();
-
 		if (!pass.equals(cpass)) {
 			System.out.println("Password Mismatch! Please enter correct password");
 			cpass = cpwd.nextLine();
@@ -50,11 +49,11 @@ public class UserRegistration {
 			if (lvname.equals(uname) && lgnpwd.equals(pass)) {
 				System.out.println("Welcome: " + lvname);
 // Search(); Method for get Origin and Destination input
-				System.out.println("Enter 1.Search Result/n Enter 2. View Ticket");
-				value=mnum.nextInt();
-				switch(value)
-				{
-				case 1:{
+				System.out.println("Enter 1.Search Result");
+				System.out.println("Enter 2. View Ticket");
+				value = mnum.nextInt();
+				switch (value) {
+				case 1: {
 					Search();
 					break;
 				}
@@ -62,12 +61,11 @@ public class UserRegistration {
 //					ViewTickets();
 //					break;
 //				}
-				default:
-				{
+				default: {
 					System.out.println("Please enter the right number.");
 				}
 				}
-				
+
 			} else {
 				System.out.println("Invalid Username or password OR Please Register if not register ");
 				n++;

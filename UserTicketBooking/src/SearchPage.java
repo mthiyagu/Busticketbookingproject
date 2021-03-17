@@ -4,21 +4,14 @@ public class SearchPage {
 
 	Scanner stno = new Scanner(System.in);
 	String[] seatno;
-	Scanner cusname = new Scanner(System.in);
-	String cname;
-	Scanner cage = new Scanner(System.in);
-	int age;
-	Scanner cgen = new Scanner(System.in);
-	String gen;
-	Scanner cmob = new Scanner(System.in);
-	String mobno;
 	Scanner busselct = new Scanner(System.in);
 	int bsname;
 	Scanner sorgn = new Scanner(System.in);
 	Scanner sdestn = new Scanner(System.in);
-	BusMap b1 = new BusMap();
+	PassengerDetails b1 = new PassengerDetails();
 	int count = 0;
 	int fare;
+	ArrayList<String> seatnumbers = new ArrayList<String>();
 
 	void BusDetails(String Fromroute, String Toroute) {
 		HashMap<Integer, String> Froute = new HashMap<Integer, String>();
@@ -35,7 +28,6 @@ public class SearchPage {
 		Troute.put(19, "salem");
 		String Frm = Fromroute;
 		String Tor = Toroute;
-
 		int j = 1;
 		for (int i = 0; i < j; i++) {
 			if (Froute.containsValue(Frm) && Troute.containsValue(Tor)) {
@@ -117,7 +109,7 @@ public class SearchPage {
 				}
 				}
 			} else {
-				System.out.println("Oops...Sorry! There is no bus service for the particular route. Thank you");
+				System.out.println("Oops...Sorry! There is no bus service for the particular route.Try Again");
 				System.out.println("Enter From Station: ");
 				Frm = sorgn.nextLine();
 				System.out.println("Enter To Station: ");
@@ -133,32 +125,46 @@ public class SearchPage {
 		String fstn = frte;
 		String tstn = trte;
 		int totprice = totfare;
+		int j = 1;
 		System.out.println("Bus Type: 2+2 Semi Sleeper A/c Multi-Axle Volvo");
-		b1.SeatBusMap();
-		System.out.println("Please enter Seat number with comma separator:");
-		seatno = stno.nextLine().split(","); // Import concept to split a value using comma separator
-		System.out.println("Please enter Passenger name: ");
-		cname = cusname.nextLine();
-		System.out.println("Enter Age: ");
-		age = cage.nextInt();
-		System.out.println("Enter Gender: ");
-		gen = cgen.nextLine();
-		System.out.println("Enter Mobile number: ");
-		mobno = cmob.nextLine();
-		System.out.println("Congratulation! Your ticket booked successfully ");
+		System.out.println("Please Check the below available seats");
+		seatnumbers.add("23");
+		seatnumbers.add("12W");
+		seatnumbers.add("7SL");
+		seatnumbers.add("8SL");
+		seatnumbers.add("20");
+		seatnumbers.add("21W");
+		seatnumbers.add("14");
+		seatnumbers.add("15W");
+		seatnumbers.add("16");
+		seatnumbers.add("17W");
+		Iterator<String> itr = seatnumbers.iterator();
+		while (itr.hasNext()) {
+			System.out.println(itr.next());
+		}
+		for (int i = 0; i < j; i++) {
+			System.out.println("Please enter Seat number with comma separator:");
+			seatno = stno.nextLine().split(","); // Important concept to split a value using comma separator
+			for (String w : seatno) {
+				if (seatnumbers.contains(w)||seatnumbers.contains(w.toUpperCase()))
+					count = count + 1;
+
+				else {
+					System.out.println("Sorry Selected seat not available or already booked");
+					j++;
+					break;
+				}
+			}
+		}
+		b1.UserDetails();
 		System.out.println("Route : " + fstn + " to " + tstn);
-		System.out.println("Passenger Name:  " + cname);
-		System.out.println("Age:  " + age);
-		System.out.println("Gender:  " + gen);
 		for (String w : seatno) {
-			System.out.println(w);
-			count = count + 1;
+			System.out.println(w.toUpperCase());
 		}
 		totprice = totprice * count;
 		System.out.println("Total booked Seat numbers :" + count);
 		System.out.println("Total Fare: " + totprice);
 		// System.out.println("Seat No: " + seatno);
-		System.out.println("Mobile Number :  " + mobno);
 		stno.close();
 	}
 
