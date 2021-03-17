@@ -115,10 +115,9 @@ public class SearchPage {
 				System.out.println("Enter To Station: ");
 				Tor = sdestn.nextLine();
 				j++;
-
 			}
 		}
-		busselct.close();
+
 	}
 
 	void SeatSelection(String frte, String trte, int totfare) {
@@ -146,9 +145,8 @@ public class SearchPage {
 			System.out.println("Please enter Seat number with comma separator:");
 			seatno = stno.nextLine().split(","); // Important concept to split a value using comma separator
 			for (String w : seatno) {
-				if (seatnumbers.contains(w)||seatnumbers.contains(w.toUpperCase()))
+				if (seatnumbers.contains(w) || seatnumbers.contains(w.toUpperCase()))
 					count = count + 1;
-
 				else {
 					System.out.println("Sorry Selected seat not available or already booked");
 					j++;
@@ -164,8 +162,7 @@ public class SearchPage {
 		totprice = totprice * count;
 		System.out.println("Total booked Seat numbers :" + count);
 		System.out.println("Total Fare: " + totprice);
-		// System.out.println("Seat No: " + seatno);
-		stno.close();
+
 	}
 
 }

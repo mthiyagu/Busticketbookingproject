@@ -1,4 +1,5 @@
-import java.util.Scanner;
+
+import java.util.*;
 
 public class PassengerDetails {
 
@@ -19,11 +20,15 @@ public class PassengerDetails {
 		System.out.println("Enter Mobile number: ");
 		mobno = passenger.nextInt();
 		System.out.println("Congratulation! Your ticket booked successfully ");
+		ViewTickets();
+
+	}
+
+	void ViewTickets() {
+		System.out.println("Confirmed Ticket ");
 		System.out.println("Passenger Name:  " + cname);
 		System.out.println("Age:  " + age);
 		System.out.println("Gender:  " + gen);
 		System.out.println("Mobile Number :  " + mobno);
-		passenger.close();
-		cgen.close();
 	}
 }

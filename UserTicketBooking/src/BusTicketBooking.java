@@ -1,17 +1,19 @@
-import java.io.IOException;
+
 import java.util.*;
 
 public class BusTicketBooking {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 
 		Scanner num = new Scanner(System.in);
 		int no;
 		UserRegistration s1 = new UserRegistration();
+		PassengerDetails s2 = new PassengerDetails();
 		do {
 			System.out.println("Please enter your Option:");
 			System.out.println("Press '1' For Login");
 			System.out.println("Press '2' for Registration");
+			// System.out.println("Press '3' for View Tickets");
 			System.out.println("Press '3' To Exit");
 			no = num.hasNextInt() ? num.nextInt() : 3;
 			switch (no) {
@@ -21,7 +23,6 @@ public class BusTicketBooking {
 			}
 			case 2: {
 				s1.UserRegister();
-				System.out.println("Registration done successfully");
 				break;
 			}
 			case 3: {
@@ -33,7 +34,9 @@ public class BusTicketBooking {
 				System.out.println("Enter wrong number Thank you!");
 			}
 			}
+
 		} while (no != 3);
+		s2.ViewTickets();
 		// s1.show();
 		num.close();
 	}

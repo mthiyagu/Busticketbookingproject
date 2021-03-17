@@ -23,6 +23,7 @@ public class UserRegistration {
 	Scanner Destn = new Scanner(System.in);
 	String dstation;
 	SearchPage sp1 = new SearchPage();
+	PassengerDetails pd1 = new PassengerDetails();
 
 	void UserRegister() {
 		System.out.println("Please enter your user name");
@@ -37,6 +38,7 @@ public class UserRegistration {
 		}
 		System.out.println("Enter your Mobile number: ");
 		mno = mnum.nextInt();
+		System.out.println("Registration done successfully");
 	}
 
 	void LoginValidation() {
@@ -48,7 +50,6 @@ public class UserRegistration {
 			lgnpwd = lvpwd.nextLine();
 			if (lvname.equals(uname) && lgnpwd.equals(pass)) {
 				System.out.println("Welcome: " + lvname);
-// Search(); Method for get Origin and Destination input
 				System.out.println("Enter 1.Search Result");
 				System.out.println("Enter 2. View Ticket");
 				value = mnum.nextInt();
@@ -57,10 +58,10 @@ public class UserRegistration {
 					Search();
 					break;
 				}
-//			case 2:{
-//					ViewTickets();
-//					break;
-//				}
+				case 2: {
+					pd1.ViewTickets();
+					break;
+				}
 				default: {
 					System.out.println("Please enter the right number.");
 				}
