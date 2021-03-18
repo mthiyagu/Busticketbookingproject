@@ -22,7 +22,6 @@ public class PassengerDetails {
 		mobno = scan.nextInt();
 		System.out.println("Congratulation! Your ticket booked successfully ");
 		ViewTickets();
-
 	}
 
 	static void ViewTickets() {

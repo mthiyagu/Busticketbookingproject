@@ -72,7 +72,6 @@ public class UserRegistration {
 				n++;
 			}
 		}
-
 	}
 
 	void Search() {

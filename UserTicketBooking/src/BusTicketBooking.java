@@ -8,7 +8,7 @@ public class BusTicketBooking {
 		Scanner num = new Scanner(System.in);
 		int no;
 		UserRegistration s1 = new UserRegistration();
-		//PassengerDetails s2 = new PassengerDetails();
+		// PassengerDetails s2 = new PassengerDetails();
 		do {
 			System.out.println("Please enter your Option:");
 			System.out.println("Press '1' For Login");
@@ -39,7 +39,6 @@ public class BusTicketBooking {
 			}
 
 		} while (no != 4);
-
 		// s1.show();
 		num.close();
 	}
