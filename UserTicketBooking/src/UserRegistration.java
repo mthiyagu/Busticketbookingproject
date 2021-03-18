@@ -59,7 +59,7 @@ public class UserRegistration {
 					break;
 				}
 				case 2: {
-					pd1.ViewTickets();
+					PassengerDetails.ViewTickets();
 					break;
 				}
 				default: {
@@ -71,9 +71,7 @@ public class UserRegistration {
 				System.out.println("Invalid Username or password OR Please Register if not register ");
 				n++;
 			}
-
 		}
-
 	}
 
 	void Search() {
