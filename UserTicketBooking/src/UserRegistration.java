@@ -59,7 +59,7 @@ public class UserRegistration {
 					break;
 				}
 				case 2: {
-					pd1.ViewTickets();
+					PassengerDetails.ViewTickets();
 					break;
 				}
 				default: {

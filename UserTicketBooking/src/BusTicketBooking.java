@@ -8,14 +8,14 @@ public class BusTicketBooking {
 		Scanner num = new Scanner(System.in);
 		int no;
 		UserRegistration s1 = new UserRegistration();
-		PassengerDetails s2 = new PassengerDetails();
+		//PassengerDetails s2 = new PassengerDetails();
 		do {
 			System.out.println("Please enter your Option:");
 			System.out.println("Press '1' For Login");
 			System.out.println("Press '2' for Registration");
-			// System.out.println("Press '3' for View Tickets");
-			System.out.println("Press '3' To Exit");
-			no = num.hasNextInt() ? num.nextInt() : 3;
+			System.out.println("Press '3' for View Tickets");
+			System.out.println("Press '4' To Exit");
+			no = num.hasNextInt() ? num.nextInt() : 4;
 			switch (no) {
 			case 1: {
 				s1.LoginValidation();
@@ -26,6 +26,10 @@ public class BusTicketBooking {
 				break;
 			}
 			case 3: {
+				PassengerDetails.ViewTickets();
+				break;
+			}
+			case 4: {
 				System.out.println("Thank you");
 				break;
 			}
@@ -34,8 +38,8 @@ public class BusTicketBooking {
 			}
 			}
 
-		} while (no != 3);
-		s2.ViewTickets();
+		} while (no != 4);
+
 		// s1.show();
 		num.close();
 	}

@@ -4,12 +4,12 @@ import java.util.*;
 public class PassengerDetails {
 
 	Scanner passenger = new Scanner(System.in);
-	String cname;
+	static String cname;
 	Scanner scan = new Scanner(System.in);
-	int age;
+	static int age;
 	Scanner cgen = new Scanner(System.in);
-	String gen;
-	int mobno;
+	static String gen;
+	static int mobno;
 
 	void UserDetails() {
 		System.out.println("Please enter Passenger name: ");
@@ -25,7 +25,7 @@ public class PassengerDetails {
 
 	}
 
-	void ViewTickets() {
+	static void ViewTickets() {
 		System.out.println("Confirmed Ticket ");
 		System.out.println("Passenger Name:  " + cname);
 		System.out.println("Age:  " + age);
