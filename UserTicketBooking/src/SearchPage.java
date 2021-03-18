@@ -162,6 +162,7 @@ public class SearchPage {
 		totprice = totprice * count;
 		System.out.println("Total booked Seat numbers :" + count);
 		System.out.println("Total Fare: " + totprice);
+
 	}
 
 }

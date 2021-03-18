@@ -34,6 +34,7 @@ public class BusTicketBooking {
 				System.out.println("Enter wrong number Thank you!");
 			}
 			}
+
 		} while (no != 3);
 		s2.ViewTickets();
 		// s1.show();
