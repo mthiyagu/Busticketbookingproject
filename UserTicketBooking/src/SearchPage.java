@@ -152,9 +152,11 @@ public class SearchPage {
 					System.out.println("Sorry Selected seat not available or already booked");
 					j++;
 					break;
+					
 				}
 			}
 		}
+		
 		b1.UserDetails();
 		System.out.println("Route : " + fstn + " to " + tstn);
 		count = 0;
