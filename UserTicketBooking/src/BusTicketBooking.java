@@ -29,7 +29,6 @@ public class BusTicketBooking {
 				System.out.println("Thank you");
 				break;
 			}
-
 			default: {
 				System.out.println("Enter wrong number Thank you!");
 			}

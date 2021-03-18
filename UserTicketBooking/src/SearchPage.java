@@ -3,13 +3,13 @@ import java.util.*;
 public class SearchPage {
 
 	Scanner stno = new Scanner(System.in);
-	String[] seatno;
+	String[] seatno = new String[10];
 	Scanner busselct = new Scanner(System.in);
 	int bsname;
 	Scanner sorgn = new Scanner(System.in);
 	Scanner sdestn = new Scanner(System.in);
 	PassengerDetails b1 = new PassengerDetails();
-	int count = 0;
+	int count;
 	int fare;
 	ArrayList<String> seatnumbers = new ArrayList<String>();
 
@@ -144,6 +144,7 @@ public class SearchPage {
 		for (int i = 0; i < j; i++) {
 			System.out.println("Please enter Seat number with comma separator:");
 			seatno = stno.nextLine().split(","); // Important concept to split a value using comma separator
+
 			for (String w : seatno) {
 				if (seatnumbers.contains(w) || seatnumbers.contains(w.toUpperCase()))
 					count = count + 1;
@@ -156,13 +157,15 @@ public class SearchPage {
 		}
 		b1.UserDetails();
 		System.out.println("Route : " + fstn + " to " + tstn);
+		count = 0;
 		for (String w : seatno) {
 			System.out.println(w.toUpperCase());
+			count = count + 1;
 		}
 		totprice = totprice * count;
 		System.out.println("Total booked Seat numbers :" + count);
 		System.out.println("Total Fare: " + totprice);
-
+		seatnumbers.clear();
 	}
 
 }

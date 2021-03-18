@@ -5,6 +5,7 @@ public class PassengerDetails {
 
 	Scanner passenger = new Scanner(System.in);
 	String cname;
+	Scanner scan = new Scanner(System.in);
 	int age;
 	Scanner cgen = new Scanner(System.in);
 	String gen;
@@ -14,11 +15,11 @@ public class PassengerDetails {
 		System.out.println("Please enter Passenger name: ");
 		cname = passenger.nextLine();
 		System.out.println("Enter Age: ");
-		age = passenger.nextInt();
+		age = scan.nextInt();
 		System.out.println("Enter Gender: ");
 		gen = cgen.nextLine();
 		System.out.println("Enter Mobile number: ");
-		mobno = passenger.nextInt();
+		mobno = scan.nextInt();
 		System.out.println("Congratulation! Your ticket booked successfully ");
 		ViewTickets();
 
