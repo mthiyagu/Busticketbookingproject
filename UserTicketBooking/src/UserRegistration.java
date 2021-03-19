@@ -10,7 +10,7 @@ public class UserRegistration {
 	Scanner cpwd = new Scanner(System.in);
 	String cpass;
 	Scanner mnum = new Scanner(System.in);
-	int mno;
+	long mno;
 	int value;
 // User login Validation	
 	Scanner lvusrname = new Scanner(System.in);
@@ -37,7 +37,7 @@ public class UserRegistration {
 			cpass = cpwd.nextLine();
 		}
 		System.out.println("Enter your Mobile number: ");
-		mno = mnum.nextInt();
+		mno = mnum.nextLong();
 		System.out.println("Registration done successfully");
 	}
 

@@ -20,6 +20,7 @@ public class SearchPage {
 		Froute.put(60, "bangalore");
 		Froute.put(70, "hyderabad");
 		Froute.put(55, "coimbatore");
+		Froute.put(90, "madurai");
 		Troute.put(65, "chennai");
 		Troute.put(60, "bangalore");
 		Troute.put(70, "hyderabad");
@@ -110,10 +111,17 @@ public class SearchPage {
 				}
 			} else {
 				System.out.println("Oops...Sorry! There is no bus service for the particular route.Try Again");
-				System.out.println("Enter From Station: ");
-				Frm = sorgn.nextLine();
-				System.out.println("Enter To Station: ");
-				Tor = sdestn.nextLine();
+				int n = 1;
+				for (int k = 0; k < n; k++) {
+					System.out.println("Enter From Station: ");
+					Frm = sorgn.nextLine();
+					System.out.println("Enter To Station: ");
+					Tor = sdestn.nextLine();
+					if (Frm.equals(Tor)) {
+						System.out.println("Source and Destination cannot be same, Please try again");
+						n++;
+					}
+				}
 				j++;
 			}
 		}
@@ -156,16 +164,16 @@ public class SearchPage {
 		}
 
 		b1.UserDetails();
-		//System.out.println("Route : " + fstn + " to " + tstn);
+		// System.out.println("Route : " + fstn + " to " + tstn);
 		count = 0;
 		for (String w : seatno) {
 			System.out.println(w.toUpperCase());
 			count = count + 1;
 		}
 		totprice = totprice * count;
-		//System.out.println("Total booked Seat numbers :" + count);
-		//System.out.println("Total Fare: " + totprice);
-		b1.PrintTicket(fstn,tstn,seatno,count,totprice);
+		// System.out.println("Total booked Seat numbers :" + count);
+		// System.out.println("Total Fare: " + totprice);
+		b1.PrintTicket(fstn, tstn, seatno, count, totprice);
 		seatnumbers.clear();
 	}
 
