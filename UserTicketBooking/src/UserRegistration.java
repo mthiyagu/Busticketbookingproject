@@ -95,6 +95,6 @@ public class UserRegistration {
 	void Show() {
 		System.out.println("Your Name is: " + uname);
 		System.out.println("Password : " + pass);
-		System.out.println("Mobile Number: " + mno);
+		System.out.println("Mobile Num: " + mno);
 	}
 }

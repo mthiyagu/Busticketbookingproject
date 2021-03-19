@@ -36,7 +36,7 @@ public class BusTicketBooking {
 			}
 		} while (no != 3);
 		s2.ViewTickets();
-		// s1.show();
+		// s1.show();;
 		num.close();
 	}
 
