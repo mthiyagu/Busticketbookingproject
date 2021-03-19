@@ -156,15 +156,16 @@ public class SearchPage {
 		}
 
 		b1.UserDetails();
-		System.out.println("Route : " + fstn + " to " + tstn);
+		//System.out.println("Route : " + fstn + " to " + tstn);
 		count = 0;
 		for (String w : seatno) {
 			System.out.println(w.toUpperCase());
 			count = count + 1;
 		}
 		totprice = totprice * count;
-		System.out.println("Total booked Seat numbers :" + count);
-		System.out.println("Total Fare: " + totprice);
+		//System.out.println("Total booked Seat numbers :" + count);
+		//System.out.println("Total Fare: " + totprice);
+		b1.PrintTicket(fstn,tstn,seatno,count,totprice);
 		seatnumbers.clear();
 	}
 
