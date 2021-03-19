@@ -9,7 +9,7 @@ public class PassengerDetails {
 	static int age;
 	Scanner cgen = new Scanner(System.in);
 	static String gen;
-	static int mobno;
+	static long mobno;
 	static String source;
 	static String destination;
 	static String[] seatnumbers;
@@ -24,7 +24,7 @@ public class PassengerDetails {
 		System.out.println("Enter Gender: ");
 		gen = cgen.nextLine();
 		System.out.println("Enter Mobile number: ");
-		mobno = scan.nextInt();
+		mobno = scan.nextLong();
 		System.out.println("Congratulation! Your ticket booked successfully ");
 		System.out.println("Passenger Name:  " + cname);
 		System.out.println("Age:  " + age);
@@ -34,14 +34,13 @@ public class PassengerDetails {
 	}
 
 	void PrintTicket(String fstn, String tstn, String[] seatno, int count, int totprice) {
-		source=fstn;
-		destination=tstn;
-		seatnumbers=seatno;
-		totseats=count;
-		totfare=totprice;
-		
+		source = fstn;
+		destination = tstn;
+		seatnumbers = seatno;
+		totseats = count;
+		totfare = totprice;
 		System.out.println("Route : " + source + " to " + destination);
-		System.out.println("Total booked Seat numbers :" + totseats);
+		System.out.println("Total booked Seats :" + totseats);
 		System.out.println("Total Fare: " + totfare);
 
 	}
@@ -56,7 +55,7 @@ public class PassengerDetails {
 		for (String w : seatnumbers) {
 			System.out.println(w.toUpperCase());
 		}
-		System.out.println("Total booked Seat numbers :" + totseats);
+		System.out.println("Total booked Seats :" + totseats);
 		System.out.println("Total Fare: " + totfare);
 	}
 }
