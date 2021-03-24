@@ -25,7 +25,7 @@ public class BusTicketBooking {
 				break;
 			}
 			case 3: {
-				PassengerDetails.ViewTickets();
+				PassengerDetails.getDetails();
 				break;
 			}
 			case 4: {
