@@ -1,4 +1,5 @@
 import java.util.*;
+import java.sql.*;
 
 public class UserRegistration {
 
@@ -39,6 +40,7 @@ public class UserRegistration {
 		System.out.println("Enter your Mobile number: ");
 		mno = mnum.nextLong();
 		System.out.println("Registration done successfully");
+		insert();
 	}
 
 	void LoginValidation() {
@@ -50,7 +52,7 @@ public class UserRegistration {
 			lgnpwd = lvpwd.nextLine();
 			if (lvname.equals(uname) && lgnpwd.equals(pass)) {
 				System.out.println("Welcome: " + lvname);
-				System.out.println("Enter 1.Search Result");
+				System.out.println("Enter 1. Search Result");
 				System.out.println("Enter 2. View Ticket");
 				value = mnum.nextInt();
 				switch (value) {
@@ -59,7 +61,7 @@ public class UserRegistration {
 					break;
 				}
 				case 2: {
-					PassengerDetails.ViewTickets();
+					PassengerDetails.getDetails();
 					break;
 				}
 				default: {
@@ -95,5 +97,21 @@ public class UserRegistration {
 		System.out.println("Your Name is: " + uname);
 		System.out.println("Password : " + pass);
 		System.out.println("Mobile Num: " + mno);
+	}
+
+	void insert() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "arul");
+			PreparedStatement ps = cn
+					.prepareStatement("insert into user_details(user_name,user_pwd,mob_no) values(?,?,?)");
+			ps.setString(1, uname);
+			ps.setString(2, pass);
+			ps.setLong(3, mno);
+			ps.executeUpdate();
+			cn.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 }

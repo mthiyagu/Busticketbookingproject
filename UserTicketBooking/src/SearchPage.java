@@ -11,6 +11,9 @@ public class SearchPage {
 	PassengerDetails b1 = new PassengerDetails();
 	int count;
 	int fare;
+	int totFare;
+	String OperatorName;
+	
 	ArrayList<String> seatnumbers = new ArrayList<String>();
 
 	void BusDetails(String Fromroute, String Toroute) {
@@ -47,62 +50,72 @@ public class SearchPage {
 				switch (bsname) {
 				case 1: {
 					System.out.println("Travels Name: Parveen Travels");
+					OperatorName = "Parveen Travels";
 					fare = 800;
-					SeatSelection(Frm, Tor, fare);
+					SeatSelection(Frm, Tor, fare, OperatorName);
 					break;
 				}
 				case 2: {
 					System.out.println("Travels Name: Muthu Travels");
+					OperatorName = "Muthu Travels";
 					fare = 650;
-					SeatSelection(Frm, Tor, fare);
+					SeatSelection(Frm, Tor, fare, OperatorName);
 					break;
 				}
 				case 3: {
 					System.out.println("Travels Name: SRM Travels");
+					OperatorName = "SRM Travels";
 					fare = 750;
-					SeatSelection(Frm, Tor, fare);
+					SeatSelection(Frm, Tor, fare, OperatorName);
 					break;
 				}
 				case 4: {
 					System.out.println("Travels Name: YBM Travels");
+					OperatorName = "YBM Travels";
 					fare = 600;
-					SeatSelection(Frm, Tor, fare);
+					SeatSelection(Frm, Tor, fare, OperatorName);
 					break;
 				}
 				case 5: {
 					System.out.println("Travels Name: King Travels");
+					OperatorName = "King Travels";
 					fare = 700;
-					SeatSelection(Frm, Tor, fare);
+					SeatSelection(Frm, Tor, fare, OperatorName);
 					break;
 				}
 				case 6: {
 					System.out.println("Travels Name: Sree Kannathal Travels");
+					OperatorName = "Sree Kannathal Travels";
 					fare = 750;
-					SeatSelection(Frm, Tor, fare);
+					SeatSelection(Frm, Tor, fare, OperatorName);
 					break;
 				}
 				case 7: {
 					System.out.println("Travels Name: Apple Travels");
+					OperatorName = "Apple Travels";
 					fare = 780;
-					SeatSelection(Frm, Tor, fare);
+					SeatSelection(Frm, Tor, fare, OperatorName);
 					break;
 				}
 				case 8: {
 					System.out.println("Travels Name: National Travels");
+					OperatorName = "National Travels";
 					fare = 800;
-					SeatSelection(Frm, Tor, fare);
+					SeatSelection(Frm, Tor, fare, OperatorName);
 					break;
 				}
 				case 9: {
 					System.out.println("Travels Name: Sharma Transport");
+					OperatorName = "Sharma Transport";
 					fare = 690;
-					SeatSelection(Frm, Tor, fare);
+					SeatSelection(Frm, Tor, fare, OperatorName);
 					break;
 				}
 				case 10: {
 					System.out.println("Travels Name: GeePee Travels");
+					OperatorName = "GeePee Travels";
 					fare = 850;
-					SeatSelection(Frm, Tor, fare);
+					SeatSelection(Frm, Tor, fare, OperatorName);
 					break;
 				}
 				default: {
@@ -127,10 +140,11 @@ public class SearchPage {
 		}
 	}
 
-	void SeatSelection(String frte, String trte, int totfare) {
+	void SeatSelection(String frte, String trte, int fare, String OperatorName) {
 		String fstn = frte;
 		String tstn = trte;
-		int totprice = totfare;
+		int price = fare;
+		String busname = OperatorName;
 		int j = 1;
 		System.out.println("Bus Type: 2+2 Semi Sleeper A/c Multi-Axle Volvo");
 		System.out.println("Please Check the below available seats");
@@ -150,8 +164,8 @@ public class SearchPage {
 		}
 		for (int i = 0; i < j; i++) {
 			System.out.println("Please enter Seat number with comma separator:");
+			
 			seatno = stno.nextLine().split(","); // Important concept to split a value using comma separator
-
 			for (String w : seatno) {
 				if (seatnumbers.contains(w) || seatnumbers.contains(w.toUpperCase()))
 					count = count + 1;
@@ -170,10 +184,10 @@ public class SearchPage {
 			System.out.println(w.toUpperCase());
 			count = count + 1;
 		}
-		totprice = totprice * count;
+		totFare = price * count;
 		// System.out.println("Total booked Seat numbers :" + count);
 		// System.out.println("Total Fare: " + totprice);
-		b1.PrintTicket(fstn, tstn, seatno, count, totprice);
+		b1.PrintTicket(fstn, tstn, seatno, count, totFare, price, busname);
 		seatnumbers.clear();
 	}
 
