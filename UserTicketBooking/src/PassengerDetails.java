@@ -19,9 +19,7 @@ public class PassengerDetails {
 			rec.setInt(7, amount);
 			rec.setLong(8, mobno);
 			StringJoiner buf = new StringJoiner(",");
-			for (String st : seatnumbers)
-
-			{
+			for (String st : seatnumbers) {
 
 				buf.add(st.toString());
 				rec.setString(9, buf.toString());
@@ -53,7 +51,7 @@ public class PassengerDetails {
 	static int amount;
 	static String travelsname;
 
-	void UserDetails() {
+	void userDetails() {
 		System.out.println("Please enter Passenger name: ");
 		cname = passenger.nextLine();
 		System.out.println("Enter Age: ");
@@ -63,6 +61,7 @@ public class PassengerDetails {
 		System.out.println("Enter Mobile number: ");
 		mobno = scan.nextLong();
 		System.out.println("Congratulation! Your ticket booked successfully ");
+		System.out.println("Travels Name: " + travelsname);
 		System.out.println("Passenger Name:  " + cname);
 		System.out.println("Age:  " + age);
 		System.out.println("Gender:  " + gen);
@@ -70,7 +69,7 @@ public class PassengerDetails {
 
 	}
 
-	void PrintTicket(String fstn, String tstn, String[] seatno, int count, int totprice, int fare, String busname) {
+	void printTicket(String fstn, String tstn, String[] seatno, int count, int totprice, int fare, String busname) {
 		source = fstn;
 		destination = tstn;
 		seatnumbers = seatno;
@@ -86,7 +85,7 @@ public class PassengerDetails {
 
 	}
 
-	static void ViewTickets() {
+	static void viewTickets() {
 		System.out.println("Confirmed Ticket ");
 		System.out.println("Travels Name: " + travelsname);
 		System.out.println("Route : " + source + " to " + destination);
@@ -102,7 +101,7 @@ public class PassengerDetails {
 //		}
 		System.out.println("Total booked Seats :" + totseats);
 		System.out.println("Total Fare: " + totfare);
-		
+
 	}
 
 	static void getDetails() {
@@ -124,8 +123,9 @@ public class PassengerDetails {
 				st = rs.getString("seat_no");
 				totseats = rs.getInt("tot_seats");
 				totfare = rs.getInt("tot_fare");
-				ViewTickets();
+				viewTickets();
 			}
+			con.close();
 		} catch (Exception e) {
 			System.out.println(e);
 		}

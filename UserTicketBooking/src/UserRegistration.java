@@ -26,7 +26,7 @@ public class UserRegistration {
 	SearchPage sp1 = new SearchPage();
 	PassengerDetails pd1 = new PassengerDetails();
 
-	void UserRegister() {
+	void userRegister() {
 		System.out.println("Please enter your user name");
 		uname = usrname.nextLine();
 		System.out.println("Enter  password");
@@ -43,40 +43,7 @@ public class UserRegistration {
 		insert();
 	}
 
-	void LoginValidation() {
-		int n = 1;
-		for (int i = 0; i < n; i++) {
-			System.out.println("Enter Your Username: ");
-			lvname = lvusrname.nextLine();
-			System.out.println("Enter password:");
-			lgnpwd = lvpwd.nextLine();
-			if (lvname.equals(uname) && lgnpwd.equals(pass)) {
-				System.out.println("Welcome: " + lvname);
-				System.out.println("Enter 1. Search Result");
-				System.out.println("Enter 2. View Ticket");
-				value = mnum.nextInt();
-				switch (value) {
-				case 1: {
-					Search();
-					break;
-				}
-				case 2: {
-					PassengerDetails.getDetails();
-					break;
-				}
-				default: {
-					System.out.println("Please enter the right number.");
-				}
-				}
-
-			} else {
-				System.out.println("Invalid Username or password OR Please Register if not register ");
-				n++;
-			}
-		}
-	}
-
-	void Search() {
+	void search() {
 
 		int j = 1;
 		for (int i = 0; i < j; i++) {
@@ -90,10 +57,11 @@ public class UserRegistration {
 			}
 		}
 
-		sp1.BusDetails(org, dstation);
+		sp1.busDetails(org, dstation);
 	}
 
-	void Show() {
+	void show() {
+
 		System.out.println("Your Name is: " + uname);
 		System.out.println("Password : " + pass);
 		System.out.println("Mobile Num: " + mno);
@@ -112,6 +80,52 @@ public class UserRegistration {
 			cn.close();
 		} catch (Exception e) {
 			System.out.println(e);
+		}
+	}
+
+	void getUser() {
+		int n = 1;
+		for (int i = 0; i < n; i++) {
+			System.out.println("Enter Your Username: ");
+			lvname = lvusrname.nextLine();
+			System.out.println("Enter password:");
+			lgnpwd = lvpwd.nextLine();
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				Connection cont = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "arul");
+				PreparedStatement stmt = cont.prepareStatement(
+						"select user_name,user_pwd from user_details where user_name = ? and user_pwd = ?");
+				stmt.setString(1, lvname);
+				stmt.setString(2, lgnpwd);
+				ResultSet rs = stmt.executeQuery();
+				if (rs.next()) {
+					uname = rs.getString("user_name");
+					pass = rs.getString("user_pwd");
+					System.out.println("Welcome: " + lvname);
+					System.out.println("Enter '1' for Search Result");
+					System.out.println("Enter '2' for View Ticket");
+					value = mnum.nextInt();
+					switch (value) {
+					case 1: {
+						search();
+						break;
+					}
+					case 2: {
+						PassengerDetails.getDetails();
+						break;
+					}
+					default: {
+						System.out.println("Please enter the right number.");
+					}
+					}
+				} else {
+					System.out.println("Invalid Username or Password");
+					n++;
+				}
+				cont.close();
+			} catch (Exception e) {
+				System.out.println(e);
+			}
 		}
 	}
 }
