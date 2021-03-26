@@ -17,11 +17,11 @@ public class BusTicketBooking {
 			no = num.hasNextInt() ? num.nextInt() : 4;
 			switch (no) {
 			case 1: {
-				s1.LoginValidation();
+				s1.getUser();
 				break;
 			}
 			case 2: {
-				s1.UserRegister();
+				s1.userRegister();
 				break;
 			}
 			case 3: {
