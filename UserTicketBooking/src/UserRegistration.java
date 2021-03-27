@@ -1,44 +1,55 @@
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.sql.*;
 
-public class UserRegistration {
+public class UserRegistration  {
+	
+	
+	public static Logger log = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
+	public void mylog() {
+		log.setLevel(Level.INFO);
+		log.info("Error on SQL fields! Please check");
+
+	}
 
 // Getting Input for User Registration 	
 	Scanner usrname = new Scanner(System.in);
-	String uname;
+	String username;
 	Scanner pwd = new Scanner(System.in);
-	String pass;
+	String password;
 	Scanner cpwd = new Scanner(System.in);
-	String cpass;
+	String confirmPassword;
 	Scanner mnum = new Scanner(System.in);
-	long mno;
+	long mobileNumber;
 	int value;
 // User login Validation	
 	Scanner lvusrname = new Scanner(System.in);
-	String lvname;
+	String loginName;
 	Scanner lvpwd = new Scanner(System.in);
-	String lgnpwd;
+	String loginPassword;
 // Getting user input for Origin and Destination
 	Scanner orgn = new Scanner(System.in);
-	String org;
+	String origin;
 	Scanner Destn = new Scanner(System.in);
-	String dstation;
+	String destination;
 	SearchPage sp1 = new SearchPage();
 	PassengerDetails pd1 = new PassengerDetails();
 
 	void userRegister() {
 		System.out.println("Please enter your user name");
-		uname = usrname.nextLine();
+		username = usrname.nextLine();
 		System.out.println("Enter  password");
-		pass = pwd.nextLine();
+		password = pwd.nextLine();
 		System.out.println("Enter Confirm Password: ");
-		cpass = cpwd.nextLine();
-		if (!pass.equals(cpass)) {
+		confirmPassword = cpwd.nextLine();
+		if (!password.equals(confirmPassword)) {
 			System.out.println("Password Mismatch! Please enter correct password");
-			cpass = cpwd.nextLine();
+			confirmPassword = cpwd.nextLine();
 		}
 		System.out.println("Enter your Mobile number: ");
-		mno = mnum.nextLong();
+		mobileNumber = mnum.nextLong();
 		System.out.println("Registration done successfully");
 		insert();
 	}
@@ -48,23 +59,23 @@ public class UserRegistration {
 		int j = 1;
 		for (int i = 0; i < j; i++) {
 			System.out.println("Enter From Station: ");
-			org = orgn.nextLine();
+			origin = orgn.nextLine();
 			System.out.println("Enter To Station: ");
-			dstation = Destn.nextLine();
-			if (org.equals(dstation)) {
+			destination = Destn.nextLine();
+			if (origin.equals(destination)) {
 				System.out.println("origin and destination cannot be same");
 				j++;
 			}
 		}
 
-		sp1.busDetails(org, dstation);
+		sp1.busDetails(origin, destination);
 	}
 
 	void show() {
 
-		System.out.println("Your Name is: " + uname);
-		System.out.println("Password : " + pass);
-		System.out.println("Mobile Num: " + mno);
+		System.out.println("Your Name is: " + username);
+		System.out.println("Password : " + password);
+		System.out.println("Mobile Num: " + mobileNumber);
 	}
 
 	void insert() {
@@ -73,13 +84,14 @@ public class UserRegistration {
 			Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "arul");
 			PreparedStatement ps = cn
 					.prepareStatement("insert into user_details(user_name,user_pwd,mob_no) values(?,?,?)");
-			ps.setString(1, uname);
-			ps.setString(2, pass);
-			ps.setLong(3, mno);
+			ps.setString(1, username);
+			ps.setString(2, password);
+			ps.setLong(3, mobileNumber);
 			ps.executeUpdate();
 			cn.close();
 		} catch (Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
+			mylog();
 		}
 	}
 
@@ -87,21 +99,21 @@ public class UserRegistration {
 		int n = 1;
 		for (int i = 0; i < n; i++) {
 			System.out.println("Enter Your Username: ");
-			lvname = lvusrname.nextLine();
+			loginName = lvusrname.nextLine();
 			System.out.println("Enter password:");
-			lgnpwd = lvpwd.nextLine();
+			loginPassword = lvpwd.nextLine();
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
 				Connection cont = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "arul");
 				PreparedStatement stmt = cont.prepareStatement(
 						"select user_name,user_pwd from user_details where user_name = ? and user_pwd = ?");
-				stmt.setString(1, lvname);
-				stmt.setString(2, lgnpwd);
+				stmt.setString(1, loginName);
+				stmt.setString(2, loginPassword);
 				ResultSet rs = stmt.executeQuery();
 				if (rs.next()) {
-					uname = rs.getString("user_name");
-					pass = rs.getString("user_pwd");
-					System.out.println("Welcome: " + lvname);
+					username = rs.getString("user_name");
+					password = rs.getString("user_pwd");
+					System.out.println("Welcome: " + loginName);
 					System.out.println("Enter '1' for Search Result");
 					System.out.println("Enter '2' for View Ticket");
 					value = mnum.nextInt();
@@ -124,8 +136,10 @@ public class UserRegistration {
 				}
 				cont.close();
 			} catch (Exception e) {
-				System.out.println(e);
+				e.printStackTrace();
+				mylog();
 			}
+
 		}
 	}
 }

@@ -3,10 +3,12 @@ import java.util.*;
 
 public class BusTicketBooking {
 
+
+
 	public static void main(String[] args) {
 
 		Scanner num = new Scanner(System.in);
-		int no;
+		int number;
 		UserRegistration s1 = new UserRegistration();
 		do {
 			System.out.println("Please enter your Option:");
@@ -14,8 +16,8 @@ public class BusTicketBooking {
 			System.out.println("Press '2' for Registration");
 			System.out.println("Press '3' for View Tickets");
 			System.out.println("Press '4' To Exit");
-			no = num.hasNextInt() ? num.nextInt() : 4;
-			switch (no) {
+			number = num.hasNextInt() ? num.nextInt() : 4;
+			switch (number) {
 			case 1: {
 				s1.getUser();
 				break;
@@ -37,7 +39,7 @@ public class BusTicketBooking {
 			}
 			}
 
-		} while (no != 4);
+		} while (number != 4);
 		// s1.show();
 
 		num.close();

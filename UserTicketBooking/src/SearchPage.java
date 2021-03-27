@@ -16,24 +16,24 @@ public class SearchPage {
 	ArrayList<String> seatnumbers = new ArrayList<String>();
 
 	void busDetails(String fromRoute, String toRoute) {
-		HashMap<Integer, String> Froute = new HashMap<Integer, String>();
-		HashMap<Integer, String> Troute = new HashMap<Integer, String>();
-		Froute.put(65, "chennai");
-		Froute.put(60, "bangalore");
-		Froute.put(70, "hyderabad");
-		Froute.put(55, "coimbatore");
-		Froute.put(90, "madurai");
-		Troute.put(65, "chennai");
-		Troute.put(60, "bangalore");
-		Troute.put(70, "hyderabad");
-		Troute.put(55, "coimbatore");
-		Troute.put(90, "madurai");
-		Troute.put(19, "salem");
-		String Frm = fromRoute;
-		String Tor = toRoute;
+		HashMap<Integer, String> fromStation = new HashMap<Integer, String>();
+		HashMap<Integer, String> toStation = new HashMap<Integer, String>();
+		fromStation.put(65, "chennai");
+		fromStation.put(60, "bangalore");
+		fromStation.put(70, "hyderabad");
+		fromStation.put(55, "coimbatore");
+		fromStation.put(90, "madurai");
+		toStation.put(65, "chennai");
+		toStation.put(60, "bangalore");
+		toStation.put(70, "hyderabad");
+		toStation.put(55, "coimbatore");
+		toStation.put(90, "madurai");
+		toStation.put(19, "salem");
+		String origin = fromRoute;
+		String destination = toRoute;
 		int j = 1;
 		for (int i = 0; i < j; i++) {
-			if (Froute.containsValue(Frm) && Troute.containsValue(Tor)) {
+			if (fromStation.containsValue(origin) && toStation.containsValue(destination)) {
 				System.out.println("Please Choose your bus: ");
 				System.out.println("1. Parveen Travels 2+1 Sleeper A/c Rs.800");
 				System.out.println("2. Muthu Travels 2+2 Semi-Sleeper non a/c Rs.650");
@@ -51,70 +51,70 @@ public class SearchPage {
 					System.out.println("Travels Name: Parveen Travels");
 					operatorName = "Parveen Travels";
 					fare = 800;
-					seatSelection(Frm, Tor, fare, operatorName);
+					seatSelection(origin, destination, fare, operatorName);
 					break;
 				}
 				case 2: {
 					System.out.println("Travels Name: Muthu Travels");
 					operatorName = "Muthu Travels";
 					fare = 650;
-					seatSelection(Frm, Tor, fare, operatorName);
+					seatSelection(origin, destination, fare, operatorName);
 					break;
 				}
 				case 3: {
 					System.out.println("Travels Name: SRM Travels");
 					operatorName = "SRM Travels";
 					fare = 750;
-					seatSelection(Frm, Tor, fare, operatorName);
+					seatSelection(origin, destination, fare, operatorName);
 					break;
 				}
 				case 4: {
 					System.out.println("Travels Name: YBM Travels");
 					operatorName = "YBM Travels";
 					fare = 600;
-					seatSelection(Frm, Tor, fare, operatorName);
+					seatSelection(origin, destination, fare, operatorName);
 					break;
 				}
 				case 5: {
 					System.out.println("Travels Name: King Travels");
 					operatorName = "King Travels";
 					fare = 700;
-					seatSelection(Frm, Tor, fare, operatorName);
+					seatSelection(origin, destination, fare, operatorName);
 					break;
 				}
 				case 6: {
 					System.out.println("Travels Name: Sree Kannathal Travels");
 					operatorName = "Sree Kannathal Travels";
 					fare = 750;
-					seatSelection(Frm, Tor, fare, operatorName);
+					seatSelection(origin, destination, fare, operatorName);
 					break;
 				}
 				case 7: {
 					System.out.println("Travels Name: Apple Travels");
 					operatorName = "Apple Travels";
 					fare = 780;
-					seatSelection(Frm, Tor, fare, operatorName);
+					seatSelection(origin, destination, fare, operatorName);
 					break;
 				}
 				case 8: {
 					System.out.println("Travels Name: National Travels");
 					operatorName = "National Travels";
 					fare = 800;
-					seatSelection(Frm, Tor, fare, operatorName);
+					seatSelection(origin, destination, fare, operatorName);
 					break;
 				}
 				case 9: {
 					System.out.println("Travels Name: Sharma Transport");
 					operatorName = "Sharma Transport";
 					fare = 690;
-					seatSelection(Frm, Tor, fare, operatorName);
+					seatSelection(origin, destination, fare, operatorName);
 					break;
 				}
 				case 10: {
 					System.out.println("Travels Name: GeePee Travels");
 					operatorName = "GeePee Travels";
 					fare = 850;
-					seatSelection(Frm, Tor, fare, operatorName);
+					seatSelection(origin, destination, fare, operatorName);
 					break;
 				}
 				default: {
@@ -126,10 +126,10 @@ public class SearchPage {
 				int n = 1;
 				for (int k = 0; k < n; k++) {
 					System.out.println("Enter From Station: ");
-					Frm = sorgn.nextLine();
+					origin = sorgn.nextLine();
 					System.out.println("Enter To Station: ");
-					Tor = sdestn.nextLine();
-					if (Frm.equals(Tor)) {
+					destination = sdestn.nextLine();
+					if (origin.equals(destination)) {
 						System.out.println("Source and Destination cannot be same, Please try again");
 						n++;
 					}
@@ -176,15 +176,12 @@ public class SearchPage {
 		}
 
 		b1.userDetails();
-		// System.out.println("Route : " + fstn + " to " + tstn);
 		count = 0;
 		for (String w : seatno) {
 			System.out.println(w.toUpperCase());
 			count = count + 1;
 		}
 		totFare = price * count;
-		// System.out.println("Total booked Seat numbers :" + count);
-		// System.out.println("Total Fare: " + totprice);
 		b1.printTicket(fstn, tstn, seatno, count, totFare, price, busname);
 		seatnumbers.clear();
 	}
