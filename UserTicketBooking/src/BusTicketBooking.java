@@ -3,8 +3,6 @@ import java.util.*;
 
 public class BusTicketBooking {
 
-
-
 	public static void main(String[] args) {
 
 		Scanner num = new Scanner(System.in);

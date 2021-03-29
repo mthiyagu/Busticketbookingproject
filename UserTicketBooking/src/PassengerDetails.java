@@ -14,7 +14,6 @@ public class PassengerDetails {
 
 	}
 
-	
 	static void sqlConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -73,7 +72,6 @@ public class PassengerDetails {
 		System.out.println("Enter Mobile number: ");
 		mobileNumber = scan.nextLong();
 		System.out.println("Congratulation! Your ticket booked successfully ");
-		System.out.println("Travels Name: " + travelsName);
 		System.out.println("Passenger Name:  " + customerName);
 		System.out.println("Age:  " + age);
 		System.out.println("Gender:  " + gender);
@@ -89,6 +87,7 @@ public class PassengerDetails {
 		totFare = totprice;
 		amount = fare;
 		travelsName = busname;
+		System.out.println("Travels Name: " + travelsName);
 		System.out.println("Fare: " + amount);
 		System.out.println("Route : " + source + " to " + destination);
 		System.out.println("Total booked Seats :" + totSeats);
