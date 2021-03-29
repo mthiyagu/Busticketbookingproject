@@ -3,14 +3,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.*;
 
-public class UserRegistration  {
-	
-	
+public class UserRegistration {
+
 	public static Logger log = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 	public void mylog() {
 		log.setLevel(Level.INFO);
-		log.info("Error on SQL fields! Please check");
+		log.info("Error on SQL fields! Please check the ");
 
 	}
 
