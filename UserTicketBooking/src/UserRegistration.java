@@ -23,6 +23,7 @@ public class UserRegistration {
 	Scanner mnum = new Scanner(System.in);
 	long mobileNumber;
 	int value;
+	static int userId;
 // User login Validation	
 	Scanner lvusrname = new Scanner(System.in);
 	String loginName;
@@ -105,11 +106,12 @@ public class UserRegistration {
 				Class.forName("com.mysql.jdbc.Driver");
 				Connection cont = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "arul");
 				PreparedStatement stmt = cont.prepareStatement(
-						"select user_name,user_pwd from user_details where user_name = ? and user_pwd = ?");
+						"select user_id,user_name,user_pwd from user_details where user_name = ? and user_pwd = ?");
 				stmt.setString(1, loginName);
 				stmt.setString(2, loginPassword);
 				ResultSet rs = stmt.executeQuery();
 				if (rs.next()) {
+					userId = rs.getInt("user_id");
 					username = rs.getString("user_name");
 					password = rs.getString("user_pwd");
 					System.out.println("Welcome: " + loginName);
