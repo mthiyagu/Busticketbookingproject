@@ -3,10 +3,12 @@ import java.util.*;
 
 public class BusTicketBooking {
 
+	
 	public static void main(String[] args) {
 
 		Scanner num = new Scanner(System.in);
 		int number;
+		
 		UserRegistration s1 = new UserRegistration();
 		do {
 			System.out.println("Please enter your Option:");

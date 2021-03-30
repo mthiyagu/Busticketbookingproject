@@ -7,45 +7,6 @@ import java.sql.*;
 public class PassengerDetails {
 
 	public static Logger log1 = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-
-	public static void myLog() {
-		log1.setLevel(Level.INFO);
-		log1.info("Error on SQL fields! Please check");
-
-	}
-
-	static void sqlConnection() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "arul");
-			PreparedStatement rec = con.prepareStatement(
-					"insert into ticket_details(operator_name,source,destination,pax_name,age,gender,fare,mobile_no,seat_no,tot_seats,tot_fare) values (?,?,?,?,?,?,?,?,?,?,?)");
-			rec.setString(1, travelsName);
-			rec.setString(2, source);
-			rec.setString(3, destination);
-			rec.setString(4, customerName);
-			rec.setInt(5, age);
-			rec.setString(6, gender);
-			rec.setInt(7, amount);
-			rec.setLong(8, mobileNumber);
-			StringJoiner buf = new StringJoiner(",");
-			for (String st : seatnumbers) {
-
-				buf.add(st.toString());
-				rec.setString(9, buf.toString());
-
-			}
-			rec.setInt(10, totSeats);
-			rec.setInt(11, totFare);
-			rec.executeUpdate();
-			System.out.println("Record updated");
-			con.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-			myLog();
-		}
-	}
-
 	Scanner passenger = new Scanner(System.in);
 	static String customerName;
 	Scanner scan = new Scanner(System.in);
@@ -61,6 +22,45 @@ public class PassengerDetails {
 	static int totFare;
 	static int amount;
 	static String travelsName;
+
+	public static void myLog() {
+		log1.setLevel(Level.INFO);
+		log1.info("Error on SQL fields! Please check");
+
+	}
+
+	static void sqlConnection() {
+
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "arul");
+			PreparedStatement rec = con.prepareStatement(
+					"insert into ticket_details(operator_name,user_id,source,destination,pax_name,age,gender,fare,mobile_no,seat_no,tot_seats,tot_fare) values (?,?,?,?,?,?,?,?,?,?,?,?)");
+			rec.setString(1, travelsName);
+			rec.setInt(2, UserRegistration.userId);
+			rec.setString(3, source);
+			rec.setString(4, destination);
+			rec.setString(5, customerName);
+			rec.setInt(6, age);
+			rec.setString(7, gender);
+			rec.setInt(8, amount);
+			rec.setLong(9, mobileNumber);
+			StringJoiner buf = new StringJoiner(",");
+			for (String st : seatnumbers) {
+
+				buf.add(st.toString());
+				rec.setString(10, buf.toString());
+			}
+			rec.setInt(11, totSeats);
+			rec.setInt(12, totFare);
+			rec.executeUpdate();
+			System.out.println("Record updated");
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			myLog();
+		}
+	}
 
 	void userDetails() {
 		System.out.println("Please enter Passenger name: ");
@@ -119,9 +119,9 @@ public class PassengerDetails {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "arul");
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(
-					"select operator_name,source,destination,pax_name,age,gender,fare,mobile_no,seat_no,tot_seats,tot_fare from ticket_details");
+			PreparedStatement stmt = con.prepareStatement("select operator_name,source,destination,pax_name,age,gender,fare,mobile_no,seat_no,tot_seats,tot_fare from ticket_details where user_id= ? ");
+			stmt.setInt(1,UserRegistration.userId );
+			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				travelsName = rs.getString("operator_name");
 				source = rs.getString("source");

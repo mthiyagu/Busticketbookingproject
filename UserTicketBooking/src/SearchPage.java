@@ -20,6 +20,7 @@ public class SearchPage {
 	int routeId;
 	String busType;
 	ArrayList<String> seatnumbers = new ArrayList<String>();
+	
 
 	void busDetails(String fromRoute, String toRoute) {
 		String origin = fromRoute;
@@ -78,7 +79,7 @@ public class SearchPage {
 					}
 					j++;
 				}
-
+				cont.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 				PassengerDetails.myLog();
