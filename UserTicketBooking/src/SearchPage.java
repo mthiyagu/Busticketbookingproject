@@ -20,7 +20,6 @@ public class SearchPage {
 	int routeId;
 	String busType;
 	ArrayList<String> seatnumbers = new ArrayList<String>();
-	
 
 	void busDetails(String fromRoute, String toRoute) {
 		String origin = fromRoute;
@@ -87,9 +86,9 @@ public class SearchPage {
 		}
 	}
 
-	void seatSelection(String frte, String trte, int fare, String operator) {
-		String fstn = frte;
-		String tstn = trte;
+	void seatSelection(String fRoute, String tRoute, int fare, String operator) {
+		String fromStation = fRoute;
+		String toStation = tRoute;
 		int price = fare;
 		String busname = operator;
 		int j = 1;
@@ -129,7 +128,7 @@ public class SearchPage {
 			count = count + 1;
 		}
 		totFare = price * count;
-		b1.printTicket(fstn, tstn, seatno, count, totFare, price, busname);
+		b1.printTicket(fromStation, toStation, seatno, count, totFare, price, busname);
 		seatnumbers.clear();
 	}
 

@@ -25,14 +25,14 @@ public class UserRegistration {
 	int value;
 	static int userId;
 // User login Validation	
-	Scanner lvusrname = new Scanner(System.in);
+	Scanner loginUserName = new Scanner(System.in);
 	String loginName;
-	Scanner lvpwd = new Scanner(System.in);
+	Scanner loginpwd = new Scanner(System.in);
 	String loginPassword;
 // Getting user input for Origin and Destination
 	Scanner orgn = new Scanner(System.in);
 	String origin;
-	Scanner Destn = new Scanner(System.in);
+	Scanner destn = new Scanner(System.in);
 	String destination;
 	SearchPage sp1 = new SearchPage();
 	PassengerDetails pd1 = new PassengerDetails();
@@ -61,7 +61,7 @@ public class UserRegistration {
 			System.out.println("Enter From Station: ");
 			origin = orgn.nextLine();
 			System.out.println("Enter To Station: ");
-			destination = Destn.nextLine();
+			destination = destn.nextLine();
 			if (origin.equals(destination)) {
 				System.out.println("origin and destination cannot be same");
 				j++;
@@ -99,9 +99,9 @@ public class UserRegistration {
 		int n = 1;
 		for (int i = 0; i < n; i++) {
 			System.out.println("Enter Your Username: ");
-			loginName = lvusrname.nextLine();
+			loginName = loginUserName.nextLine();
 			System.out.println("Enter password:");
-			loginPassword = lvpwd.nextLine();
+			loginPassword = loginpwd.nextLine();
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
 				Connection cont = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "arul");
@@ -140,7 +140,6 @@ public class UserRegistration {
 				e.printStackTrace();
 				mylog();
 			}
-
 		}
 	}
 }

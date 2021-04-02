@@ -11,7 +11,7 @@ public class PassengerDetails {
 	static String customerName;
 	Scanner scan = new Scanner(System.in);
 	static int age;
-	Scanner cgen = new Scanner(System.in);
+	Scanner gen = new Scanner(System.in);
 	static String gender;
 	static long mobileNumber;
 	static String source;
@@ -68,7 +68,7 @@ public class PassengerDetails {
 		System.out.println("Enter Age: ");
 		age = scan.nextInt();
 		System.out.println("Enter Gender: ");
-		gender = cgen.nextLine();
+		gender = gen.nextLine();
 		System.out.println("Enter Mobile number: ");
 		mobileNumber = scan.nextLong();
 		System.out.println("Congratulation! Your ticket booked successfully ");
@@ -93,11 +93,13 @@ public class PassengerDetails {
 		System.out.println("Total booked Seats :" + totSeats);
 		System.out.println("Total Fare: " + totFare);
 		sqlConnection();
-
+		
 	}
 
 	static void viewTickets() {
+		System.out.println("----------------");
 		System.out.println("Confirmed Ticket ");
+		System.out.println("----------------");
 		System.out.println("Travels Name: " + travelsName);
 		System.out.println("Route : " + source + " to " + destination);
 		System.out.println("Passenger Name:  " + customerName);
@@ -119,8 +121,9 @@ public class PassengerDetails {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "arul");
-			PreparedStatement stmt = con.prepareStatement("select operator_name,source,destination,pax_name,age,gender,fare,mobile_no,seat_no,tot_seats,tot_fare from ticket_details where user_id= ? ");
-			stmt.setInt(1,UserRegistration.userId );
+			PreparedStatement stmt = con.prepareStatement(
+					"select operator_name,source,destination,pax_name,age,gender,fare,mobile_no,seat_no,tot_seats,tot_fare from ticket_details where user_id= ? ");
+			stmt.setInt(1, UserRegistration.userId);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				travelsName = rs.getString("operator_name");
